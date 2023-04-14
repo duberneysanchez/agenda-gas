@@ -14,19 +14,26 @@
                 var tablaHeader = document.createElement("thead");
                 var tablaBody = document.createElement("tbody");
 
-                for(var i=0; i< obj.length; i++){
+                //header de la tabla
+                var primeraFila = document.createElement("tr");
+                for(var i=0; i< obj[0].length; i++){
+                    var celda = document.createElement("td");
+                        celda.textContent = obj[0][i];
+                        primeraFila.appendChild(celda);
+                }
+                tablaHeader.appendChild(primeraFila);
+                tabla.appendChild(tablaHeader);
+
+                //body de la tabla
+                for(var i=1; i< obj.length; i++){
                     var fila = document.createElement("tr");
                     for(var j=0; j<obj[i].length; j++ ){
                         var celda = document.createElement("td");
                         celda.textContent = obj[i][j];
                         fila.appendChild(celda);
                     }
-                    if (i == 0) {
-                        tablaHeader.appendChild(fila);
-                        tabla.appendChild(tablaHeader);
-                    } else {
                         tablaBody.appendChild(fila);    
-                    }
+
                 }
 
                 /*Array.from(obj).forEach((filaActual, i)=>{
