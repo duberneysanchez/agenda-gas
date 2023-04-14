@@ -1,3 +1,58 @@
-<script src="">
-    
+<script>
+    function crearTablaContacto(){
+
+        var tabla = document.getElementById("tablaContactos");
+        if(tabla) tabla.remove();
+
+        google.script.run.withSuccessHandler(
+            function(obj){
+                
+                
+                tabla = document.createElement("table");
+                tabla.id = "tablaContactos";
+
+                var tablaHeader = document.createElement("thead");
+                var tablaBody = document.createElement("tbody");
+
+                for(var i=0; i< obj.length; i++){
+                    var fila = document.createElement("tr");
+                    for(var j=0; j<obj[i].length; j++ ){
+                        var celda = document.createElement("td");
+                        celda.textContent = obj[i][j];
+                        fila.appendChild(celda);
+                    }
+                    if (i == 0) {
+                        tablaHeader.appendChild(fila);
+                        tabla.appendChild(tablaHeader);
+                    } else {
+                        tablaBody.appendChild(fila);    
+                    }
+                }
+
+                /*Array.from(obj).forEach((filaActual, i)=>{
+                    var fila = document.createElement("tr");
+                    filaActual.forEach(celdaActual=>{
+                        var celda = document.createElement("td");
+                        celda.textContent = celdaActual;
+                        fila.appendChild(celda);
+                    });
+                    if (i == 0) {
+                        tablaHeader.appendChild(fila);
+                        tabla.appendChild(tablaHeader);
+                    } else {
+                        tablaBody.appendChild(fila);    
+                    }
+                    
+                });*/
+                //agregamos clases a la cabecera
+                tablaHeader.classList.add("table-primary");
+                //agregamos el cuerpo a la tabla
+                tabla.appendChild(tablaBody);
+                //agregamos clases a la tabla
+                tabla.classList.add("table", "table-striped", "border", "border-3", "table-success");
+                //agregamos tabla a la pagina
+                document.getElementById("divcontactos").appendChild(tabla);
+            }
+        ).obtenerContactos();
+    }
 </script>
