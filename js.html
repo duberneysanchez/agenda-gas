@@ -5,6 +5,9 @@
     var nombre = document.getElementById("nombre").value;
     var correo = document.getElementById("correo").value;
 
+    /*Cerrar Modal*/
+      bootstrap.Modal.getInstance(document.getElementById('crearContactoModal')).hide();
+
     /*Eliminar tabla*/
     eliminarTabla();
 
