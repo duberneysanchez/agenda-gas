@@ -23,6 +23,10 @@ function obtenerContactos() {
   return Hoja.getDataRange().getValues();
 }
 
-function insertarContactos(nombre, correo){
-  Hoja.appendRow([nombre, correo]);
+function insertarContactos(nombre, correo, phone){
+  Hoja.appendRow([nombre, correo, phone]);
+}
+
+function borrarContacto(numFila){
+  Hoja.deleteRow(numFila);
 }

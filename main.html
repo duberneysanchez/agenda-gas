@@ -35,23 +35,28 @@
 
 <!-- Modal -->
 <div class="modal fade" id="crearContactoModal" tabindex="-1" aria-labelledby="tituloCrearContactoModal" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-lg modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="tituloCrearContactoModal">Ingresar Contacto</h5>
         <!--<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
       </div>
       
-        <!-- Formulario crear contactp -->
+        <!-- Formulario crear contacto -->
         <form onsubmit="insertarContactos()" method="dialog" id="formulario">
           <div class="modal-body">
           <div class="mb-3">
-            <label for="nombre" class="form-label" >Digita el Nombre</label>
-            <input type="text" class="form-control" name="nombre" id="nombre" required>
+            <label for="nombre" class="form-label" >Digita el Nombre y Apellido</label>
+            <input type="text" class="form-control" name="nombre" id="nombre" pattern="[\D]*" title="El nombre no puede contenes numeros" required>
           </div>
-          <div class="mb-3">
-            <label for="correo" class="form-label" >Digita el Correo Electró  nico</label>
-            <input type="email" class="form-control" name="correo" id="correo" required>
+          
+          <!-- Correo y telefono -->
+          <div class="input-group mb-3">
+            <span class="input-group-text"><i class="bi bi-envelope-paper-fill"></i></span>
+            <input type="email" class="form-control me-4" name="correo" id="correo" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
+            title="Debe contener tres cadenas separadas por un @ y un punto" required>
+            <span class="input-group-text"><i class="bi bi-telephone-outbound"></i></span>
+            <input type="phone" class="form-control" name="phone" id="phone" pattern="[\d]{9,11}" title="El telefono debe de contener entre 9 y 11 digitos" required>
           </div>
       </div>
         <div class="modal-footer">
